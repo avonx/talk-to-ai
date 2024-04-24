@@ -1,0 +1,8 @@
+Flask
+groq
+langchain
+langchain_groq
+python-dotenv
+Requests
+scipy
+langchain_anthropic

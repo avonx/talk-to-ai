@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Talk to AI</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.8/lottie.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #lottie-container {
+            width: 400px;
+            height: 400px;
+            transition: transform 0.5s ease-out;
+        }
+        #record {
+            position: absolute;
+            bottom: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="lottie-container"></div>
+    <button id="record">Press [SPACE] to record</button>
+    <audio id="audio" controls style="display: none;"></audio>
+    <script>
+        const recordButton = document.getElementById("record");
+        const audioElement = document.getElementById("audio");
+        const lottieContainer = document.getElementById("lottie-container");
+        let mediaRecorder;
+        let animation;
+        let audioContext;
+        let analyser;
+        let animationScale = 1;
+
+        // Load Lottie annimation
+        fetch('static/animations/Animation - 1713990842489.json')
+            .then(response => response.json())
+            .then(data => {
+                animation = lottie.loadAnimation({
+                    container: lottieContainer,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    animationData: data
+                });
+            });
+
+        document.addEventListener('keydown', async (event) => {
+            if (event.code === 'Space' && !mediaRecorder) {
+                await startRecording();
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            if (event.code === 'Space' && mediaRecorder) {
+                stopRecording();
+            }
+        });
+
+        async function startRecording() {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+            recordButton.textContent = "Recoding...";
+        }
+
+        async function stopRecording() {
+            mediaRecorder.stop();
+            recordButton.textContent = "Press <SPACE> to record";
+
+            const audioBlob = new Blob(await new Promise(resolve => {
+                const chunks = [];
+                mediaRecorder.addEventListener("dataavailable", event => {
+                    chunks.push(event.data);
+                });
+                mediaRecorder.addEventListener("stop", () => {
+                    resolve(chunks);
+                });
+            }), { type: "audio/wav" });
+
+            const formData = new FormData();
+            formData.append("audio", audioBlob, "audio.wav");
+            const response = await fetch("/chat", { method: "POST", body: formData });
+
+            const reader = response.body.getReader();
+            audioContext = new AudioContext();
+            analyser = audioContext.createAnalyser();
+            const source = audioContext.createBufferSource();
+
+            const onStream = async (stream) => {
+                const audioBuffer = await audioContext.decodeAudioData(stream);
+                source.buffer = audioBuffer;
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+                source.start();
+                visualize();
+            };
+
+            const stream = new ReadableStream({
+                start(controller) {
+                    function push() {
+                        reader.read().then(({ done, value }) => {
+                            if (done) {
+                                controller.close();
+                                return;
+                            }
+                            controller.enqueue(value);
+                            push();
+                        });
+                    }
+                    push();
+                }
+            });
+
+            const res = new Response(stream);
+            const data = await res.arrayBuffer();
+            onStream(data);
+
+            mediaRecorder = null;
+        }
+
+        function visualize() {
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            function update() {
+                analyser.getByteFrequencyData(dataArray);
+                const volume = getAverageVolume(dataArray);
+                updateAnimation(volume);
+                requestAnimationFrame(update);
+            }
+
+            update();
+        }
+
+        function getAverageVolume(dataArray) {
+            let sum = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+                sum += dataArray[i];
+            }
+            return sum / dataArray.length;
+        }
+
+        function updateAnimation(volume) {
+            const targetScale = 1 + volume / 100;
+            animationScale += (targetScale - animationScale) * 0.1;
+            lottieContainer.style.transform = `scale(${animationScale})`;
+        }
+    </script>
+</body>
+</html>

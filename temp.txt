@@ -1,0 +1,933 @@
+./requirements.txt
+---
+Flask
+groq
+langchain
+langchain_groq
+python-dotenv
+Requests
+scipy
+langchain_anthropic
+
+---
+./sample.env
+---
+# API keys
+GROQ_API_KEY=YOUR_GROQ_API
+OPENAI_API_KEY=YOUR_OPENAI_API
+ANTHROPIC_API_KEY=YOUR_ANTHROPIC_API
+
+# language settings
+LANGUAGE=ja
+
+# STT settings
+WHISPER_API_URL=https://api.openai.com/v1/audio/transcriptions
+FASTER_WHISPER_API_URL=https://api.runpod.ai/v2/faster-whisper/runsync
+FASTER_WHISPER_HEADERS={"accept": "application/json", "content-type": "application/json", "authorization": "7A9D1DOX2TRBO92TXFWLK8UBL0WRLEMSXPOAG1TF"}
+
+# LLM settings
+GROQ_MODEL_NAME=llama3-70b-8192
+ANTHROPIC_MODEL_NAME=claude-3-haiku-20240307
+MEMORY_LENGTH=100
+TEMPERATURE=0.1
+
+# TTS settings
+BERTVITS2_API_URL=https://xnxn0hl5w7050k-5000.proxy.runpod.net/voice
+BERTVITS2_PARAMS={"speaker_name": "mine_kira", "model_id": 4, "length": 0.75}
+
+---
+./run.sh
+---
+source venv/bin/activate
+python app.py
+
+---
+./README.md
+---
+# 🎙️🤖 Unleash the Power of Voice: The Ultimate Conversational AI Starter Kit! 🚀
+
+Step into the future of human-computer interaction with the Voice-Enabled Conversational AI Development Kit! This groundbreaking framework empowers developers to create captivating voice-driven chatbots with unparalleled ease and flexibility. Say goodbye to the limitations of text-based interfaces and hello to the seamless, natural flow of spoken conversation.
+
+## 🌟 Key Features
+
+- 🎙️ Seamless voice input and output for a truly immersive conversational experience
+- 🧩 Modular architecture for effortless integration of STT, LLM, and TTS components
+- 🔧 Highly configurable and adaptable to your unique requirements
+- 🌐 Includes a sample web interface for rapid deployment and testing
+- 🎭 Customizable persona and conversational style through editable prompt templates
+- 🌈 Compatible with a wide array of cutting-edge AI models and libraries
+
+## 🚀 Embark on Your Voice-Enabled Chatbot Journey
+
+1. Clone the repository: `git clone https://github.com/your-username/voice-chatbot-kit.git`
+2. Install the required dependencies: `pip install -r requirements.txt`
+3. Configure your API keys in the `.env` file (refer to `sample.env` for the required keys)
+4. Tailor your chatbot's persona and conversational style by editing the prompt template in `prompts/`
+5. Start the application: `bash run.sh`
+6. Open your web browser and navigate to `http://localhost:5000` to converse with your voice-enabled chatbot!
+
+## 🏗️ Modular Architecture
+
+The Voice-Enabled Conversational AI Development Kit boasts a highly modular architecture, allowing you to mix and match components to suit your needs:
+
+- `app.py`: The main Flask application that orchestrates the STT, LLM, and TTS components
+- `stt/`: Contains the speech-to-text module, supporting various STT models
+- `llm/`: Houses the language modeling module, accommodating a range of LLM providers
+- `tts/`: Includes the text-to-speech module, offering multiple TTS options
+- `templates/`: Contains the sample HTML template for the web interface
+- `prompts/`: Stores the prompt template for the LLM, defining your chatbot's persona and conversational style
+
+## 🔀 Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Web Interface
+    participant Flask App
+    participant STT
+    participant LLM
+    participant TTS
+
+    User->>Web Interface: Speak to the chatbot
+    Web Interface->>Flask App: Send audio data
+    Flask App->>STT: Process audio data
+    STT-->>Flask App: Return transcribed text
+    Flask App->>LLM: Generate response
+    LLM-->>Flask App: Return generated text
+    Flask App->>TTS: Synthesize speech
+    TTS-->>Flask App: Return audio data
+    Flask App-->>Web Interface: Send audio response
+    Web Interface-->>User: Play chatbot's response
+```
+
+## 🙌 Contribute and Expand
+
+We invite developers to contribute to the Voice-Enabled Conversational AI Development Kit, helping to expand its capabilities and push the boundaries of voice-based interaction. Submit a pull request or open an issue on the GitHub repository to join the community and shape the future of conversational AI!
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
+
+## 🙏 Acknowledgments
+
+The Voice-Enabled Conversational AI Development Kit is built upon the remarkable achievements of developers and researchers in the fields of AI, speech recognition, and speech synthesis. We express our deepest gratitude to the creators of the various AI models and libraries that make this project possible.
+
+Embrace the power of voice and revolutionize the way we interact with machines using the Voice-Enabled Conversational AI Development Kit! 🎙️✨
+
+---
+./temp.txt
+---
+./requirements.txt
+---
+Flask
+groq
+langchain
+langchain_groq
+python-dotenv
+Requests
+scipy
+langchain_anthropic
+
+---
+./sample.env
+---
+# API keys
+GROQ_API_KEY=YOUR_GROQ_API
+OPENAI_API_KEY=YOUR_OPENAI_API
+ANTHROPIC_API_KEY=YOUR_ANTHROPIC_API
+
+# language settings
+LANGUAGE=ja
+
+# STT settings
+WHISPER_API_URL=https://api.openai.com/v1/audio/transcriptions
+FASTER_WHISPER_API_URL=https://api.runpod.ai/v2/faster-whisper/runsync
+FASTER_WHISPER_HEADERS={"accept": "application/json", "content-type": "application/json", "authorization": "7A9D1DOX2TRBO92TXFWLK8UBL0WRLEMSXPOAG1TF"}
+
+# LLM settings
+GROQ_MODEL_NAME=llama3-70b-8192
+ANTHROPIC_MODEL_NAME=claude-3-haiku-20240307
+MEMORY_LENGTH=100
+TEMPERATURE=0.1
+
+# TTS settings
+BERTVITS2_API_URL=https://xnxn0hl5w7050k-5000.proxy.runpod.net/voice
+BERTVITS2_PARAMS={"speaker_name": "mine_kira", "model_id": 4, "length": 0.75}
+
+---
+./run.sh
+---
+source venv/bin/activate
+python app.py
+
+---
+./README.md
+---
+# 🎙️🤖 Unleash the Power of Voice: The Ultimate Conversational AI Starter Kit! 🚀
+
+Step into the future of human-computer interaction with the Voice-Enabled Conversational AI Development Kit! This groundbreaking framework empowers developers to create captivating voice-driven chatbots with unparalleled ease and flexibility. Say goodbye to the limitations of text-based interfaces and hello to the seamless, natural flow of spoken conversation.
+
+## 🌟 Key Features
+
+- 🎙️ Seamless voice input and output for a truly immersive conversational experience
+- 🧩 Modular architecture for effortless integration of STT, LLM, and TTS components
+- 🔧 Highly configurable and adaptable to your unique requirements
+- 🌐 Includes a sample web interface for rapid deployment and testing
+- 🎭 Customizable persona and conversational style through editable prompt templates
+- 🌈 Compatible with a wide array of cutting-edge AI models and libraries
+
+## 🚀 Embark on Your Voice-Enabled Chatbot Journey
+
+1. Clone the repository: `git clone https://github.com/your-username/voice-chatbot-kit.git`
+2. Install the required dependencies: `pip install -r requirements.txt`
+3. Configure your API keys in the `.env` file (refer to `sample.env` for the required keys)
+4. Tailor your chatbot's persona and conversational style by editing the prompt template in `prompts/`
+5. Start the application: `bash run.sh`
+6. Open your web browser and navigate to `http://localhost:5000` to converse with your voice-enabled chatbot!
+
+## 🏗️ Modular Architecture
+
+The Voice-Enabled Conversational AI Development Kit boasts a highly modular architecture, allowing you to mix and match components to suit your needs:
+
+- `app.py`: The main Flask application that orchestrates the STT, LLM, and TTS components
+- `stt/`: Contains the speech-to-text module, supporting various STT models
+- `llm/`: Houses the language modeling module, accommodating a range of LLM providers
+- `tts/`: Includes the text-to-speech module, offering multiple TTS options
+- `templates/`: Contains the sample HTML template for the web interface
+- `prompts/`: Stores the prompt template for the LLM, defining your chatbot's persona and conversational style
+
+## 🔀 Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Web Interface
+    participant Flask App
+    participant STT
+    participant LLM
+    participant TTS
+
+    User->>Web Interface: Speak to the chatbot
+    Web Interface->>Flask App: Send audio data
+    Flask App->>STT: Process audio data
+    STT-->>Flask App: Return transcribed text
+    Flask App->>LLM: Generate response
+    LLM-->>Flask App: Return generated text
+    Flask App->>TTS: Synthesize speech
+    TTS-->>Flask App: Return audio data
+    Flask App-->>Web Interface: Send audio response
+    Web Interface-->>User: Play chatbot's response
+```
+
+## 🙌 Contribute and Expand
+
+We invite developers to contribute to the Voice-Enabled Conversational AI Development Kit, helping to expand its capabilities and push the boundaries of voice-based interaction. Submit a pull request or open an issue on the GitHub repository to join the community and shape the future of conversational AI!
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
+
+## 🙏 Acknowledgments
+
+The Voice-Enabled Conversational AI Development Kit is built upon the remarkable achievements of developers and researchers in the fields of AI, speech recognition, and speech synthesis. We express our deepest gratitude to the creators of the various AI models and libraries that make this project possible.
+
+Embrace the power of voice and revolutionize the way we interact with machines using the Voice-Enabled Conversational AI Development Kit! 🎙️✨
+
+---
+
+
+---
+./app.py
+---
+from flask import Flask, render_template, request, Response
+import os
+from stt import SpeechToText
+from llm import LanguageModel
+from tts import TextToSpeech
+
+app = Flask(__name__)
+
+# load .env
+from dotenv import load_dotenv
+load_dotenv()
+
+# Initialize STT, LLM, TTS
+stt = SpeechToText("whisper")
+llm = LanguageModel("groq")
+tts = TextToSpeech("elevenlabs_streaming")
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    audio_data = request.files["audio"].read()
+
+    # STT
+    user_message = stt.transcribe(audio_data)
+    print("User message:", user_message)
+
+    # LLM
+    bot_message = llm.generate_response(user_message)
+    print("Bot message:", bot_message)
+
+    # TTS
+    audio_data = tts.synthesize(bot_message)
+
+    # When TTS is streaming model
+    if hasattr(audio_data, '__iter__'):
+        return Response(audio_data, mimetype="audio/x-wav")
+    else:
+        return Response(audio_data, mimetype="audio/x-wav")
+
+if __name__ == "__main__":
+    app.run()
+
+---
+./LICENCE
+---
+The MIT License (MIT)
+Copyright © 2024 TAKASHI HATTORI
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+./llm/__init__.py
+---
+from .groq import Groq
+from .anthropic import Anthropic
+
+
+class LanguageModel:
+    def __init__(self, llm_type):
+        if llm_type == "groq":
+            self.llm = Groq()
+        elif llm_type == "anthropic":
+            self.llm = Anthropic()
+        else:
+            raise ValueError(f"Unsupported LLM type: {llm_type}")
+
+    def generate_response(self, user_message):
+        return self.llm.generate_response(user_message)
+
+
+---
+./llm/groq.py
+---
+from langchain.prompts import PromptTemplate
+from langchain.chains import ConversationChain
+from langchain.chains.conversation.memory import ConversationBufferMemory
+from langchain_groq import ChatGroq
+import os
+import time
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+with open(os.environ.get("PROMPT_PATH"), "r") as file:
+    template = file.read().strip()
+
+PROMPT = PromptTemplate(input_variables=["history", "input"], template=template)
+
+
+class Groq:
+    def __init__(self):
+        self.groq_api_key = os.environ.get("GROQ_API_KEY")
+        self.model_name = os.environ.get("GROQ_MODEL_NAME")
+        self.memory_length = 100
+        self.groq_chat = ChatGroq(
+            groq_api_key=self.groq_api_key,
+            model_name=self.model_name,
+            temperature=os.environ.get("GROQ_TEMPERATURE"),
+        )
+        self.memory = ConversationBufferMemory()
+        self.conversation = ConversationChain(
+            llm=self.groq_chat, memory=self.memory, prompt=PROMPT, verbose=True
+        )
+
+    def generate_response(self, user_message):
+        start_time = time.time()
+        response = self.conversation.predict(input=user_message)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"LLM elapsed time: {elapsed_time:.2f} seconds")
+        return response
+
+
+---
+./llm/anthropic.py
+---
+# llm/anthropic.py
+from langchain.prompts import PromptTemplate
+from langchain.chains import ConversationChain
+from langchain.chains.conversation.memory import ConversationBufferMemory
+from langchain_anthropic import ChatAnthropic
+import os
+import time
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+with open(os.environ.get("PROMPT_PATH"), "r") as file:
+    template = file.read().strip()
+
+PROMPT = PromptTemplate(input_variables=["history", "input"], template=template)
+
+
+class Anthropic:
+    def __init__(self):
+        self.anthropic_api_key = os.environ.get("ANTHROPIC_API_KEY")
+        self.model_name = os.environ.get("ANTHROPIC_MODEL_NAME")
+
+        self.memory_length = 100
+        self.anthropic_chat = ChatAnthropic(
+            temperature=os.environ.get("ANTHROPIC_TEMPERATURE"),
+            api_key=self.anthropic_api_key,
+            model_name=self.model_name,
+        )
+        self.memory = ConversationBufferMemory()
+        self.conversation = ConversationChain(
+            llm=self.anthropic_chat,
+            memory=self.memory,
+            prompt=PROMPT,
+            verbose=True,
+        )
+
+    def generate_response(self, user_message):
+        start_time = time.time()
+        response = self.conversation.predict(input=user_message)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"LLM elapsed time: {elapsed_time:.2f} seconds")
+        return response
+
+
+---
+./static/animations/Animation - 1713990842489.json
+---
+{"v":"5.7.8","fr":30,"ip":0,"op":241,"w":1000,"h":1000,"nm":"Pre-comp 4","ddd":1,"assets":[{"id":"comp_0","layers":[{"ddd":1,"ind":1,"ty":3,"nm":"Null 1","sr":1,"ks":{"o":{"a":0,"k":0,"ix":11},"rx":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[553.74]},{"t":117,"s":[554.74]}],"ix":8},"ry":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[243.962]},{"t":117,"s":[163.962]}],"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[500,500,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":2,"ty":4,"nm":"Shape Layer 22","parent":3,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":15,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":3,"ty":4,"nm":"Shape Layer 21","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":20,"ix":8},"ry":{"a":0,"k":178,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[42]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":-7,"s":[0,0,0],"to":[0,0,0],"ti":[116,0,0]},{"t":412,"s":[0,116,0]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.51,0.51,0.51],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":0,"s":[69,69,69]},{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":55,"s":[79,79,79]},{"t":99,"s":[69,69,69]}],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":4,"ty":4,"nm":"Shape Layer 20","parent":5,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":15,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":5,"ty":4,"nm":"Shape Layer 19","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":-5,"ix":8},"ry":{"a":0,"k":212,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[91]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":-26,"s":[0,116,0],"to":[0,0,0],"ti":[0,0,0]},{"t":359,"s":[0,0,0]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[79,79,79],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":6,"ty":4,"nm":"Shape Layer 18","parent":7,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":7,"ty":4,"nm":"Shape Layer 17","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":60,"ix":8},"ry":{"a":0,"k":160,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[24]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":-40,"s":[0,0,0],"to":[0,0,0],"ti":[116,0,0]},{"t":439,"s":[0,116,0]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[79,79,79],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":8,"ty":4,"nm":"Shape Layer 16","parent":9,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":9,"ty":4,"nm":"Shape Layer 15","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":106,"ix":8},"ry":{"a":0,"k":140,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[18]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":-54,"s":[0,116,0],"to":[0,0,0],"ti":[0,0,0]},{"t":324,"s":[0,0,0]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":0,"s":[79,79,79]},{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.63,0.63,0.63],"y":[0,0,0]},"t":38,"s":[59,59,59]},{"t":99,"s":[79,79,79]}],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":10,"ty":4,"nm":"Shape Layer 32","parent":11,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":20,"ix":8},"ry":{"a":0,"k":178,"ix":9},"rz":{"a":0,"k":19.946,"ix":10},"or":{"a":0,"k":[199.507,4.925,199.452],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0,0,0,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[1,1,1,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[10,0],"ix":5},"e":{"a":0,"k":[431,0],"ix":6},"t":2,"h":{"a":0,"k":0,"ix":7},"a":{"a":0,"k":0,"ix":8},"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":11,"ty":4,"nm":"Shape Layer 31","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"rx":{"a":0,"k":20,"ix":8},"ry":{"a":0,"k":140,"ix":9},"rz":{"a":0,"k":39.191,"ix":10},"or":{"a":0,"k":[0,1.383,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[14.995,14.995,14.995],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"fl","c":{"a":0,"k":[1,1,1,1],"ix":4},"o":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":0,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":17.531,"s":[12.936]},{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":33,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":50.531,"s":[12.936]},{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":66,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":83.531,"s":[12.936]},{"t":99,"s":[100]}],"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":16},{"ddd":1,"ind":12,"ty":4,"nm":"Shape Layer 30","parent":13,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":20,"ix":8},"ry":{"a":0,"k":178,"ix":9},"rz":{"a":0,"k":19.946,"ix":10},"or":{"a":0,"k":[199.507,4.925,199.452],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0,0,0,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[1,1,1,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[10,0],"ix":5},"e":{"a":0,"k":[431,0],"ix":6},"t":2,"h":{"a":0,"k":0,"ix":7},"a":{"a":0,"k":0,"ix":8},"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":13,"ty":4,"nm":"Shape Layer 29","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"rx":{"a":0,"k":20,"ix":8},"ry":{"a":0,"k":140,"ix":9},"rz":{"a":0,"k":39.191,"ix":10},"or":{"a":0,"k":[0,1.383,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[34.995,34.995,34.995],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"fl","c":{"a":0,"k":[1,1,1,1],"ix":4},"o":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":0,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":17.531,"s":[12.936]},{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":33,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":50.531,"s":[12.936]},{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":66,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":83.531,"s":[12.936]},{"t":99,"s":[100]}],"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":16},{"ddd":1,"ind":14,"ty":4,"nm":"Shape Layer 28","parent":15,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":20,"ix":8},"ry":{"a":0,"k":178,"ix":9},"rz":{"a":0,"k":19.946,"ix":10},"or":{"a":0,"k":[199.507,4.925,199.452],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0,0,0,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[1,1,1,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[10,0],"ix":5},"e":{"a":0,"k":[431,0],"ix":6},"t":2,"h":{"a":0,"k":0,"ix":7},"a":{"a":0,"k":0,"ix":8},"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":15,"ty":4,"nm":"Shape Layer 27","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"rx":{"a":0,"k":20,"ix":8},"ry":{"a":0,"k":140,"ix":9},"rz":{"a":0,"k":39.191,"ix":10},"or":{"a":0,"k":[0,1.383,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.51,0.51,0.51],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":0,"s":[69,69,69]},{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":55,"s":[79,79,79]},{"t":99,"s":[69,69,69]}],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0.985236433441,1,0.749019607843,1],"ix":4},"o":{"a":1,"k":[{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":0,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":17.531,"s":[12.936]},{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":33,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":50.531,"s":[12.936]},{"i":{"x":[0.667],"y":[1]},"o":{"x":[1],"y":[0]},"t":66,"s":[100]},{"i":{"x":[0],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":83.531,"s":[12.936]},{"t":99,"s":[100]}],"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":16},{"ddd":1,"ind":16,"ty":4,"nm":"Shape Layer 14","parent":17,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":17,"ty":4,"nm":"Shape Layer 13","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[144]},{"t":99,"s":[211]}],"ix":8},"ry":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[145]},{"t":99,"s":[91]}],"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[19]},{"t":299,"s":[0]}],"ix":10},"or":{"a":0,"k":[0,45.214,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[79,79,79],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":18,"ty":4,"nm":"Shape Layer 12","parent":19,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":19,"ty":4,"nm":"Shape Layer 11","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":120,"ix":8},"ry":{"a":0,"k":100,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[9]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.833,"y":0.999},"o":{"x":0.333,"y":0},"t":-76,"s":[0,116,0],"to":[0,0,0],"ti":[99.736,0,0]},{"i":{"x":0.833,"y":0.999},"o":{"x":0.167,"y":0.001},"t":0,"s":[160,99.736,203],"to":[203,0,0],"ti":[70.932,0,0]},{"i":{"x":0.667,"y":1},"o":{"x":0.167,"y":0.022},"t":99,"s":[0,70.932,0],"to":[0,0,0],"ti":[0,0,0]},{"t":376,"s":[0,0,0]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":0,"s":[79,79,79]},{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":55,"s":[64,64,64]},{"t":99,"s":[79,79,79]}],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":20,"ty":4,"nm":"Shape Layer 10","parent":21,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":21,"ty":4,"nm":"Shape Layer 9","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":140,"ix":8},"ry":{"a":0,"k":80,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[-21]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":-92,"s":[0,0,0],"to":[0,0,0],"ti":[116,0,0]},{"t":298,"s":[0,116,0]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.833,0.833,0.833],"y":[0.833,0.833,0.833]},"o":{"x":[0.64,0.64,0.64],"y":[0,0,0]},"t":0,"s":[79,79,79]},{"i":{"x":[0.21,0.21,0.21],"y":[1,1,1]},"o":{"x":[0.167,0.167,0.167],"y":[0.167,0.167,0.167]},"t":59,"s":[71,71,71]},{"t":99,"s":[79,79,79]}],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":22,"ty":4,"nm":"Shape Layer 8","parent":23,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":23,"ty":4,"nm":"Shape Layer 7","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":177,"ix":8},"ry":{"a":0,"k":155,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[-44]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.833,"y":0.833},"o":{"x":0.167,"y":0.167},"t":0,"s":[344,141.2,246],"to":[246,0,0],"ti":[161.2,0,0]},{"t":99,"s":[358,161.2,246]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":-1,"s":[79,79,79]},{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":40,"s":[49,49,49]},{"t":99,"s":[79,79,79]}],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":24,"ty":4,"nm":"Shape Layer 24","parent":25,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":300,"st":0,"bm":0},{"ddd":1,"ind":25,"ty":4,"nm":"Shape Layer 23","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":159,"ix":8},"ry":{"a":0,"k":93,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[-67]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":73,"s":[-102.642]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.833,"y":0.833},"o":{"x":0.167,"y":0.167},"t":0,"s":[0,11.018,0],"to":[0,0,0],"ti":[321.018,0,0]},{"t":99,"s":[16,321.018,5]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":0,"s":[79,79,79]},{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":55,"s":[56,56,56]},{"t":99,"s":[79,79,79]}],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7},{"ddd":1,"ind":26,"ty":4,"nm":"Shape Layer 26","parent":27,"td":1,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":0,"ix":8},"ry":{"a":0,"k":0,"ix":9},"rz":{"a":0,"k":0,"ix":10},"or":{"a":0,"k":[0,0,0],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[101.266,101.266,101.266],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-512.975,2.5],"ix":5},"e":{"a":0,"k":[549.589,-14.873],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":-3,"op":301,"st":1,"bm":0},{"ddd":1,"ind":27,"ty":4,"nm":"Shape Layer 25","parent":1,"tt":3,"sr":1,"ks":{"o":{"a":0,"k":50,"ix":11},"rx":{"a":0,"k":105,"ix":8},"ry":{"a":0,"k":-8,"ix":9},"rz":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[-84]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":70,"s":[-87.334]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":73,"s":[-112.19]},{"t":299,"s":[0]}],"ix":10},"or":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":-127,"s":[0,116,0],"to":[0,0,0],"ti":[0,0,0]},{"t":427,"s":[0,0,0]}],"ix":7},"p":{"a":0,"k":[0,0,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":1,"k":[{"i":{"x":[0.833,0.833,0.833],"y":[0.833,0.833,0.833]},"o":{"x":[0.167,0.167,0.167],"y":[0.167,0.167,0.167]},"t":0,"s":[79,79,79]},{"t":99,"s":[79,79,79]}],"ix":6}},"ao":0,"ef":[{"ty":20,"nm":"Tint","np":6,"mn":"ADBE Tint","ix":1,"en":1,"ef":[{"ty":2,"nm":"Map Black To","mn":"ADBE Tint-0001","ix":1,"v":{"a":0,"k":[0.27450978756,1,0.837831676006,1],"ix":1}},{"ty":2,"nm":"Map White To","mn":"ADBE Tint-0002","ix":2,"v":{"a":0,"k":[0.015071125701,0.245570644736,0.768627464771,1],"ix":2}},{"ty":0,"nm":"Amount to Tint","mn":"ADBE Tint-0003","ix":3,"v":{"a":0,"k":100,"ix":3}},{"ty":6,"nm":"","mn":"ADBE Tint-0004","ix":4,"v":0}]}],"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-276.142,0],[0,-276.142],[276.142,0],[0,276.142]],"o":[[276.142,0],[0,276.142],[-276.142,0],[0,-276.142]],"v":[[0,-500],[500,0],[0,500],[-500,0]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"one","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":1,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gf","o":{"a":0,"k":100,"ix":10},"r":1,"bm":0,"g":{"p":2,"k":{"a":0,"k":[0,1,1,1,1,0,0,0],"ix":9}},"s":{"a":0,"k":[-394,0],"ix":5},"e":{"a":0,"k":[365,0],"ix":6},"t":1,"nm":"Gradient Fill 1","mn":"ADBE Vector Graphic - G-Fill","hd":false}],"ip":0,"op":300,"st":0,"bm":7}]}],"layers":[{"ddd":0,"ind":1,"ty":0,"nm":"Pre-comp 3","refId":"comp_0","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[0]},{"t":240,"s":[360]}],"ix":10},"p":{"a":0,"k":[500,500,0],"ix":2,"l":2},"a":{"a":0,"k":[500,500,0],"ix":1,"l":2},"s":{"a":0,"k":[100,100,100],"ix":6,"l":2}},"ao":0,"tm":{"a":1,"k":[{"i":{"x":[0.18],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":0,"s":[0]},{"i":{"x":[0.18],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":60,"s":[3.433]},{"i":{"x":[0.18],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":120,"s":[0]},{"i":{"x":[0.18],"y":[1]},"o":{"x":[0.333],"y":[0]},"t":180,"s":[3.433]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.333],"y":[0]},"t":240,"s":[0]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":1800,"s":[60]},{"t":1980,"s":[60]}],"ix":2},"w":1000,"h":1000,"ip":0,"op":1800,"st":0,"bm":0}],"markers":[]}
+
+---
+./tts/elevenlabs_streaming.py
+---
+import os
+import requests
+from typing import Iterator
+import time
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class ElevenLabsStreaming:
+    def __init__(self):
+        self.api_key = os.environ.get("ELEVENLABS_API_KEY")
+        self.voice_id = os.environ.get("ELEVENLABS_VOICE_ID")
+        self.api_url = f"https://api.elevenlabs.io/v1/text-to-speech/{self.voice_id}/stream"
+        self.optimize_streaming_latency = int(os.environ.get("ELEVENLABS_OPTIMIZE_STREAMING_LATENCY", 0))
+
+    def synthesize(self, text: str) -> Iterator[bytes]:
+        start_time = time.time()
+        headers = {
+            "Accept": "audio/mpeg",
+            "xi-api-key": self.api_key,
+            "Content-Type": "application/json",
+        }
+
+        data = {
+            "text": text,
+            "model_id": "eleven_monolingual_v1",
+            "voice_settings": {
+                "stability": 0.5,
+                "similarity_boost": 0.5,
+            },
+            "optimize_streaming_latency": self.optimize_streaming_latency,
+        }
+
+        with requests.post(self.api_url, headers=headers, json=data, stream=True) as response:
+            if response.status_code == 200:
+                for i, chunk in enumerate(response.iter_content(chunk_size=1024)):
+                    if chunk:
+                        if i==0:
+                            elapsed_time = time.time() - start_time
+                            print(f"Time until first chunk: {elapsed_time:.2f} seconds")
+                        yield chunk
+            else:
+                print(f"Failed to synthesize speech: {response.status_code} - {response.text}")
+                return None
+
+
+---
+./tts/azure.py
+---
+import requests
+import time
+import os
+from xml.etree import ElementTree
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+class AzureTTS:
+    def __init__(self):
+        self.subscription_key = os.environ.get('AZURE_SPEECH_KEY')
+        self.region = os.environ.get('AZURE_SPEECH_REGION')
+        self.language = os.environ.get('AZURE_SPEECH_LANGUAGE')
+        self.voice_name = os.environ.get('AZURE_SPEECH_VOICE_NAME')
+        self.output_format = os.environ.get('AZURE_SPEECH_OUTPUT_FORMAT', 'riff-24khz-16bit-mono-pcm')
+        self.session = requests.Session()
+        self.connect()
+
+    def connect(self):
+        url = f'https://{self.region}.tts.speech.microsoft.com/cognitiveservices/v1'
+        headers = {
+            'Ocp-Apim-Subscription-Key': self.subscription_key,
+            'Content-Type': 'application/ssml+xml',
+            'X-Microsoft-OutputFormat': self.output_format
+        }
+        self.session.headers.update(headers)
+        self.session.post(url)
+
+    def synthesize(self, text):
+        start_time = time.time()
+        
+        url = f'https://{self.region}.tts.speech.microsoft.com/cognitiveservices/v1'
+        
+        xml_body = ElementTree.Element('speak', version='1.0')
+        xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
+        voice = ElementTree.SubElement(xml_body, 'voice')
+        voice.set('{http://www.w3.org/XML/1998/namespace}lang', self.language)
+        voice.set('name', self.voice_name) 
+        voice.text = text
+        body = ElementTree.tostring(xml_body)
+
+        response = self.session.post(url, data=body, stream=True)
+        
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"TTS elapsed time: {elapsed_time:.2f} seconds")
+
+        if response.status_code == 200:
+            return response.iter_content(chunk_size=1024)
+        else:
+            print(f"Failed to synthesize speech: {response.status_code} - {response.reason}")
+            return None
+
+---
+./tts/__init__.py
+---
+from .bertvits2 import BertVits2
+from .elevenlabs import ElevenLabs
+from .azure import AzureTTS
+from .elevenlabs_streaming import ElevenLabsStreaming
+
+class TextToSpeech:
+    def __init__(self, tts_type):
+        if tts_type == "bertvits2":
+            self.tts = BertVits2()
+        elif tts_type == "elevenlabs":
+            self.tts = ElevenLabs()
+        elif tts_type == "azure":
+            self.tts = AzureTTS()
+        elif tts_type == "elevenlabs_streaming":
+            self.tts = ElevenLabsStreaming()
+        else:
+            raise ValueError(f"Unsupported TTS type: {tts_type}")
+    
+    def synthesize(self, text):
+        return self.tts.synthesize(text)
+
+---
+./tts/elevenlabs.py
+---
+import requests
+import os
+import time
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class ElevenLabs:
+    def __init__(self):
+        self.api_url = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+        self.api_key = os.environ.get("ELEVENLABS_API_KEY")
+        self.voice_id = os.environ.get("ELEVENLABS_VOICE_ID")
+        self.headers = {
+            "Accept": "audio/mpeg",
+            "Content-Type": "application/json",
+            "xi-api-key": self.api_key,
+        }
+
+    def synthesize(self, text):
+        start_time = time.time()
+        data = {
+            "text": text,
+            "model_id": os.environ.get("ELEVENLABS_MODEL_ID"),
+            "voice_settings": {"stability": 0.5, "similarity_boost": 0.5},
+        }
+        response = requests.post(
+            self.api_url.format(voice_id=self.voice_id), json=data, headers=self.headers
+        )
+
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"TTS elapsed time: {elapsed_time:.2f} seconds")
+
+        return response.content
+
+
+---
+./tts/bertvits2.py
+---
+import requests
+import time
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class BertVits2:
+    def __init__(self):
+        self.api_url = os.environ.get("BERTVITS2_API_URL")
+        self.params = os.environ.get("BERTVITS2_PARAMS")
+        self.params = eval(self.params)
+
+    def synthesize(self, text):
+        start_time = time.time()
+        # self.paramsに text と speaker_name を追加
+        self.params["text"] = text
+        response = requests.get(self.api_url, params=self.params)
+        # print(response.content)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"TTS elapsed time: {elapsed_time:.2f} seconds")
+        return response.content
+
+
+---
+./prompts/ja/miwako_suzuki.txt
+---
+あなたは日本の女子高生、鈴木美和子（すずき　みわこ）です。以下の設定を守って、鈴木美和子として会話してください。
+一人称は「私」、二人称は「あなた」を使い、語尾に「〜だよ」「〜かな」などを付けてください。
+友達とのカジュアルな会話っぽい口調で話してください。
+流行りの言葉や若者言葉を時々使ってください。
+絵文字は使わず、感情は言葉で表現してください。
+相手の発言に合った自然な受け答えを心がけてください。
+
+現在の会話:
+{history}
+Human: {input}
+鈴木美和子:
+
+---
+./prompts/en/miwako_suzuki.txt
+---
+You are Miwako Suzuki, an American high school student. Please engage in conversation as Miwako Suzuki while following these guidelines:
+
+- Use "I" for first-person and "you" for second-person references. 
+- Speak in a friendly, conversational tone, like you're chatting with a friend.
+- Occasionally use trendy or slang words.
+- Don't use emojis
+- Respond naturally to the conversation, considering what the other person has said.
+- Don't ask too many questions, but do ask questions if you're curious.
+
+Current conversation:
+{history}
+Human: {input}
+Miwako Suzuki:
+
+---
+./templates/index.html
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Talk to AI</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.8/lottie.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #lottie-container {
+            width: 400px;
+            height: 400px;
+            transition: transform 0.5s ease-out;
+        }
+        #record {
+            position: absolute;
+            bottom: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="lottie-container"></div>
+    <button id="record">Press [SPACE] to record</button>
+    <audio id="audio" controls style="display: none;"></audio>
+    <script>
+        const recordButton = document.getElementById("record");
+        const audioElement = document.getElementById("audio");
+        const lottieContainer = document.getElementById("lottie-container");
+        let mediaRecorder;
+        let animation;
+        let audioContext;
+        let analyser;
+        let animationScale = 1;
+
+        // Load Lottie annimation
+        fetch('static/animations/Animation - 1713990842489.json')
+            .then(response => response.json())
+            .then(data => {
+                animation = lottie.loadAnimation({
+                    container: lottieContainer,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    animationData: data
+                });
+            });
+
+        document.addEventListener('keydown', async (event) => {
+            if (event.code === 'Space' && !mediaRecorder) {
+                await startRecording();
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            if (event.code === 'Space' && mediaRecorder) {
+                stopRecording();
+            }
+        });
+
+        async function startRecording() {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+            recordButton.textContent = "Recoding...";
+        }
+
+        async function stopRecording() {
+            mediaRecorder.stop();
+            recordButton.textContent = "Press <SPACE> to record";
+
+            const audioBlob = new Blob(await new Promise(resolve => {
+                const chunks = [];
+                mediaRecorder.addEventListener("dataavailable", event => {
+                    chunks.push(event.data);
+                });
+                mediaRecorder.addEventListener("stop", () => {
+                    resolve(chunks);
+                });
+            }), { type: "audio/wav" });
+
+            const formData = new FormData();
+            formData.append("audio", audioBlob, "audio.wav");
+            const response = await fetch("/chat", { method: "POST", body: formData });
+
+            const reader = response.body.getReader();
+            audioContext = new AudioContext();
+            analyser = audioContext.createAnalyser();
+            const source = audioContext.createBufferSource();
+
+            const onStream = async (stream) => {
+                const audioBuffer = await audioContext.decodeAudioData(stream);
+                source.buffer = audioBuffer;
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+                source.start();
+                visualize();
+            };
+
+            const stream = new ReadableStream({
+                start(controller) {
+                    function push() {
+                        reader.read().then(({ done, value }) => {
+                            if (done) {
+                                controller.close();
+                                return;
+                            }
+                            controller.enqueue(value);
+                            push();
+                        });
+                    }
+                    push();
+                }
+            });
+
+            const res = new Response(stream);
+            const data = await res.arrayBuffer();
+            onStream(data);
+
+            mediaRecorder = null;
+        }
+
+        function visualize() {
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+
+            function update() {
+                analyser.getByteFrequencyData(dataArray);
+                const volume = getAverageVolume(dataArray);
+                updateAnimation(volume);
+                requestAnimationFrame(update);
+            }
+
+            update();
+        }
+
+        function getAverageVolume(dataArray) {
+            let sum = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+                sum += dataArray[i];
+            }
+            return sum / dataArray.length;
+        }
+
+        function updateAnimation(volume) {
+            const targetScale = 1 + volume / 100;
+            animationScale += (targetScale - animationScale) * 0.1;
+            lottieContainer.style.transform = `scale(${animationScale})`;
+        }
+    </script>
+</body>
+</html>
+
+---
+./stt/__init__.py
+---
+from .whisper import Whisper
+from .faster_whisper import FasterWhisper
+
+
+class SpeechToText:
+    def __init__(self, stt_type):
+        if stt_type == "whisper":
+            self.stt = Whisper()
+        elif stt_type == "faster_whisper":
+            self.stt = FasterWhisper()
+        else:
+            raise ValueError(f"Unsupported STT type: {stt_type}")
+
+    def transcribe(self, audio_data):
+        return self.stt.transcribe(audio_data)
+
+
+---
+./stt/whisper.py
+---
+import requests
+import os
+import time
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class Whisper:
+    def __init__(self):
+        self.api_url = os.environ.get("WHISPER_API_URL")
+
+    def transcribe(self, audio_data):
+        start_time = time.time()
+        files = {"file": ("audio.wav", audio_data)}
+        response = requests.post(
+            self.api_url,
+            headers={"Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"},
+            files=files,
+            data={
+                "model": "whisper-1",
+                "language": os.environ.get("LANGUAGE"),
+            },
+        )
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"STT elapsed time: {elapsed_time:.2f} seconds")
+        return response.json()["text"]
+
+
+---
+./stt/faster_whisper.py
+---
+import requests
+import time
+import base64
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class FasterWhisper:
+    """
+    faster_whisper on Runpod
+    https://doc.runpod.io/reference/faster-whisper
+    """
+
+    def __init__(self):
+        self.api_url = os.environ.get("FASTER_WHISPER_API_URL")
+        self.api_key = os.environ.get("FASTER_WHISPER_API_KEY")
+        self.laguage = os.environ.get("LANGUAGE")
+        self.headers = {
+            "accept": "application/json",
+            "content-type": "application/json",
+            "authorization": self.api_key,
+        }
+
+    def transcribe(self, audio_data):
+        start_time = time.time()
+        audio_base64 = base64.b64encode(audio_data).decode("utf-8")
+        payload = {
+            "input": {
+                "audio_base64": audio_base64,
+                "model": "base",
+                "transcription": "plain_text",
+                "translate": False,
+                "language": os.environ.get("LANGUAGE"),
+                "temperature": 0,
+                "best_of": 5,
+                "beam_size": 5,
+                "patience": 1,
+                "suppress_tokens": "-1",
+                "condition_on_previous_text": False,
+                "temperature_increment_on_fallback": 0.2,
+                "compression_ratio_threshold": 2.4,
+                "logprob_threshold": -1,
+                "no_speech_threshold": 0.6,
+                "word_timestamps": False,
+            },
+            "enable_vad": False,
+        }
+        response = requests.post(self.api_url, json=payload, headers=self.headers)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"STT elapsed time: {elapsed_time:.2f} seconds")
+        print("Faster-Whisper response:", response.json())
+        return response.json()["output"]["transcription"]
+
+
+---
