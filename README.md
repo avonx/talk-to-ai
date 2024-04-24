@@ -16,7 +16,7 @@ This framework's straightforward, modular architecture allows developers of all 
 
 ## 🚀 Getting Started
 
-1. Clone the repository: `git clone https://github.com/your-username/real-time-conversational-ai.git`
+1. Clone the repository: `git clone https://github.com/avonx/talk-to-ai.git`
 2. Install the required dependencies: `pip install -r requirements.txt`
 3. Configure your API keys in the `.env` file (refer to `sample.env` for the required keys)
 4. Customize your chatbot's persona and conversational style by editing the prompt template in `prompts/`
