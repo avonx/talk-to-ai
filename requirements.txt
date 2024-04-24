@@ -2,7 +2,7 @@ Flask
 groq
 langchain
 langchain_groq
+langchain_anthropic
 python-dotenv
 Requests
 scipy
-langchain_anthropic

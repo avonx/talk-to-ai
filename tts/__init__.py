@@ -3,6 +3,7 @@ from .elevenlabs import ElevenLabs
 from .azure import AzureTTS
 from .elevenlabs_streaming import ElevenLabsStreaming
 
+
 class TextToSpeech:
     def __init__(self, tts_type):
         if tts_type == "bertvits2":
@@ -15,6 +16,6 @@ class TextToSpeech:
             self.tts = ElevenLabsStreaming()
         else:
             raise ValueError(f"Unsupported TTS type: {tts_type}")
-    
+
     def synthesize(self, text):
         return self.tts.synthesize(text)

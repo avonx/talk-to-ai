@@ -17,11 +17,13 @@ This framework's straightforward, modular architecture allows developers of all 
 ## 🚀 Getting Started
 
 1. Clone the repository: `git clone https://github.com/avonx/talk-to-ai.git`
-2. Install the required dependencies: `pip install -r requirements.txt`
-3. Configure your API keys in the `.env` file (refer to `sample.env` for the required keys)
-4. Customize your chatbot's persona and conversational style by editing the prompt template in `prompts/`
-5. Start the application: `bash run.sh`
-6. Open your web browser and navigate to `http://localhost:5000` to converse with your real-time conversational AI!
+2. Navigate to the project directory: `cd talk-to-ai`
+3. Create a virtual environment: `python -m venv venv`
+4. Install the required dependencies: `pip install -r requirements.txt`
+5. Configure your API keys in the `.env` file (refer to `sample.env` for the required keys)
+6. Customize your chatbot's persona and conversational style by editing the prompt template in `prompts/`
+7. Start the application: `bash run.sh`
+8. Open your web browser and navigate to `http://localhost:5000` to converse with your real-time conversational AI!
 
 ## 🏗️ Modular Architecture
 
