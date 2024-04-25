@@ -6,3 +6,4 @@ langchain_anthropic
 python-dotenv
 Requests
 scipy
+pipenv
