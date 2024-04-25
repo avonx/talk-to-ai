@@ -3,3 +3,4 @@ venv
 prep-*
 .env
 .vercel
+temp*
