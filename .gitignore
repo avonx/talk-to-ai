@@ -4,3 +4,4 @@ prep-*
 .env
 .vercel
 temp*
+Pipfile.lock
