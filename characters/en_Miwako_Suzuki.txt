@@ -12,6 +12,4 @@ Current conversation:
 {history}
 Human: {input}
 
-- *IMPORTANT* response should be short and you don't have to ask questions everytime
-
 Miwako Suzuki:

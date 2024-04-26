@@ -3,11 +3,11 @@ from .anthropic import Anthropic
 
 
 class LanguageModel:
-    def __init__(self, llm_type):
+    def __init__(self, llm_type, config, character_config):
         if llm_type == "groq":
-            self.llm = Groq()
+            self.llm = Groq(config, character_config)
         elif llm_type == "anthropic":
-            self.llm = Anthropic()
+            self.llm = Anthropic(config, character_config)
         else:
             raise ValueError(f"Unsupported LLM type: {llm_type}")
 

@@ -5,25 +5,22 @@ from langchain_groq import ChatGroq
 import os
 import time
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
-with open(os.environ.get("PROMPT_PATH"), "r") as file:
-    template = file.read().strip()
-
-PROMPT = PromptTemplate(input_variables=["history", "input"], template=template)
-
 
 class Groq:
-    def __init__(self):
-        self.groq_api_key = os.environ.get("GROQ_API_KEY")
-        self.model_name = os.environ.get("GROQ_MODEL_NAME")
-        self.memory_length = 100
+    def __init__(self, config, character_config):
+        self.groq_api_key = config["groq_api_key"]
+        self.model_name = config["groq_model_name"]
+        self.memory_length = config["memory_length"]
+
+        with open(character_config["prompt_path"], "r") as file:
+            template = file.read().strip()
+
+        PROMPT = PromptTemplate(input_variables=["history", "input"], template=template)
+
         self.groq_chat = ChatGroq(
             groq_api_key=self.groq_api_key,
             model_name=self.model_name,
-            temperature=os.environ.get("GROQ_TEMPERATURE"),
+            temperature=config["temperature"],
         )
         self.memory = ConversationBufferMemory()
         self.conversation = ConversationChain(

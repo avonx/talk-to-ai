@@ -3,10 +3,6 @@ import time
 import base64
 import os
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 
 class FasterWhisper:
     """
@@ -14,10 +10,11 @@ class FasterWhisper:
     https://doc.runpod.io/reference/faster-whisper
     """
 
-    def __init__(self):
-        self.api_url = os.environ.get("FASTER_WHISPER_API_URL")
-        self.api_key = os.environ.get("FASTER_WHISPER_API_KEY")
-        self.laguage = os.environ.get("LANGUAGE")
+    def __init__(self, config, character_config):
+        self.api_url = config["faster_whisper_api_url"]
+        self.api_key = config["faster_api_key"]
+        self.language = character_config["language"]
+
         self.headers = {
             "accept": "application/json",
             "content-type": "application/json",
@@ -33,7 +30,7 @@ class FasterWhisper:
                 "model": "base",
                 "transcription": "plain_text",
                 "translate": False,
-                "language": os.environ.get("LANGUAGE"),
+                "language": self.language,
                 "temperature": 0,
                 "best_of": 5,
                 "beam_size": 5,

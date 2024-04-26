@@ -2,25 +2,23 @@ import requests
 import os
 import time
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 
 class Whisper:
-    def __init__(self):
-        self.api_url = os.environ.get("WHISPER_API_URL")
+    def __init__(self, config, character_config):
+        self.api_url = config["whisper_api_url"]
+        self.api_key = config["openai_api_key"]
+        self.language = character_config["language"]
 
     def transcribe(self, audio_data):
         start_time = time.time()
         files = {"file": ("audio.wav", audio_data)}
         response = requests.post(
             self.api_url,
-            headers={"Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"},
+            headers={"Authorization": f"Bearer {self.api_key}"},
             files=files,
             data={
                 "model": "whisper-1",
-                "language": os.environ.get("LANGUAGE"),
+                "language": self.language,
             },
         )
         end_time = time.time()

@@ -1,0 +1,96 @@
+# Character Settings
+characters:
+  en_Miwako_Suzuki:
+    name: "Miwako Suzuki"
+    description: "Miwako Suzuki is a character who is a high school student."
+    prompt_path: characters/en_Miwako_Suzuki.txt
+    language: en
+    stt: whisper
+    llm: groq
+    tts: elevenlabs_streaming
+    tts-id: jsCqWAovK2LkecY7zXl4
+  en_Ayumi_Tanaka:
+    name: "Ayumi Tanaka"
+    description: "Ayumi Tanaka is a character who is a college student."
+    prompt_path: characters/en_Ayumi_Tanaka.txt
+    language: en
+    stt: whisper
+    llm: groq
+    tts: elevenlabs_streaming
+    tts-id: XrExE9yKIg1WjnnlVkGX
+  en_Riko_Fujiwara:
+    name: "Riko Fujiwara"
+    description: "Riko Fujiwara is a character who is a freelance photographer."
+    prompt_path: characters/en_Riko_Fujiwara.txt
+    language: en
+    stt: whisper
+    llm: groq
+    tts: elevenlabs_streaming
+    tts-id: 21m00Tcm4TlvDq8ikWAM
+  en_Liam_O'Connor:
+    name: "Liam O'Connor"
+    description: "Liam O'Connor is a character who is a bartender."
+    prompt_path: characters/en_Liam_OConnor.txt
+    language: en
+    stt: whisper
+    llm: groq
+    tts: elevenlabs_streaming
+    tts-id: ODq5zmih8GrVes37Dizd
+  en_Gabriela_Santos:
+    name: "Gabriela Santos"
+    description: "Gabriela Santos is a character who is a chef."
+    prompt_path: characters/en_Gabriela_Santos.txt
+    language: en
+    stt: whisper
+    llm: groq
+    tts: elevenlabs_streaming
+    tts-id: pMsXgVXv3BLzUgSXRplE
+
+  # Other character settings are added here
+
+# STT Settings
+stt:
+  whisper:
+    openai_api_key: YOUR_OPENAI_API_KEY
+    whisper_api_url: https://api.openai.com/v1/audio/transcriptions
+  faster_whisper:
+    faster_whisper_api_url: https://api.runpod.ai/v2/faster-whisper/runsync
+    faster_api_key: YOUR_API_KEY
+
+# LLM Settings
+llm:
+  groq:
+    groq_api_key: YOUR_GROQ_API_KEY
+    groq_model_name: llama3-8b-8192
+    groq_temperature: 0.1
+    memory_length: 100
+    temperature: 0.1
+  anthropic:
+    anthropic_api_key: YOUR_API_KEY
+    anthropic_model_name: claude-3-haiku-20240307
+    anthropic_temperature: 0.1
+    memory_length: 100
+    temperature: 0.1
+
+# TTS Settings
+tts:
+  elevenlabs_streaming:
+    ### Elevenlabs（https://elevenlabs.io/docs/api-reference/text-to-speech）
+    elevenlabs_api_key: YOUR_API_KEY
+    elevenlabs_model_id: eleven_turbo_v2
+    ### ONLY FOR STREAMING MODE https://elevenlabs.io/docs/api-reference/streaming
+    elevenlabs_optimize_streaming_latency: 3
+  azure:
+    ### languages: https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech
+    ### en-US, ja-JP, etc...
+    ### models: https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#neural-voices
+    ### en-US-AriaNeural, ja-JP-AoiNeural, etc...
+    azure_speech_key: YOUR_API_KEY
+    azure_speech_region: YOUR_REGION
+    azure_speech_language: en-US
+    azure_speech_voice_name: en-US-AvaMultilingualNeural
+    output_format: riff-24khz-16bit-mono-pcm
+  bert_vits2:
+    ### Style-BERT-VITS2（https://github.com/litagin02/Style-Bert-VITS2）
+    bertvits2_api_url: https://ckm681bwrm1v01-5000.proxy.runpod.net/voice
+    bertvits2_params: {"speaker_name": "mine_kira", "model_id": 4, "length": 0.75}

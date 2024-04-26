@@ -5,3 +5,4 @@ prep-*
 .vercel
 temp*
 Pipfile.lock
+config.yaml

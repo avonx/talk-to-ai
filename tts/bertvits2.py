@@ -2,15 +2,11 @@ import requests
 import time
 import os
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 
 class BertVits2:
-    def __init__(self):
-        self.api_url = os.environ.get("BERTVITS2_API_URL")
-        self.params = os.environ.get("BERTVITS2_PARAMS")
+    def __init__(self, config, character_config):
+        self.api_url = config["bertvits2_api_url"]
+        self.params = config["bertvits2_params"]
         self.params = eval(self.params)
 
     def synthesize(self, text):

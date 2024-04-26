@@ -3,20 +3,14 @@ import time
 import os
 from xml.etree import ElementTree
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 
 class AzureTTS:
-    def __init__(self):
-        self.subscription_key = os.environ.get("AZURE_SPEECH_KEY")
-        self.region = os.environ.get("AZURE_SPEECH_REGION")
-        self.language = os.environ.get("AZURE_SPEECH_LANGUAGE")
-        self.voice_name = os.environ.get("AZURE_SPEECH_VOICE_NAME")
-        self.output_format = os.environ.get(
-            "AZURE_SPEECH_OUTPUT_FORMAT", "riff-24khz-16bit-mono-pcm"
-        )
+    def __init__(self, config, character_config):
+        self.subscription_key = config["azure_speech_key"]
+        self.region = config["azure_speech_region"]
+        self.language = config["azure_speech_language"]
+        self.voice_name = config["azure_speech_voice_name"]
+        self.output_format = config["output_format"]
         self.session = requests.Session()
         self.connect()
 

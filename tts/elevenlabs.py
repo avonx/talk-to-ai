@@ -2,16 +2,12 @@ import requests
 import os
 import time
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 
 class ElevenLabs:
-    def __init__(self):
-        self.api_url = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
-        self.api_key = os.environ.get("ELEVENLABS_API_KEY")
-        self.voice_id = os.environ.get("ELEVENLABS_VOICE_ID")
+    def __init__(self, config, character_config):
+        self.api_key = config["elevenlabs_api_key"]
+        self.voice_id = character_config["tts-id"]
+        self.elevenlabs_model_id = config["elevenlabs_model_id"]
         self.headers = {
             "Accept": "audio/mpeg",
             "Content-Type": "application/json",
@@ -22,7 +18,7 @@ class ElevenLabs:
         start_time = time.time()
         data = {
             "text": text,
-            "model_id": os.environ.get("ELEVENLABS_MODEL_ID"),
+            "model_id": self.elevenlabs_model_id,
             "voice_settings": {"stability": 0.5, "similarity_boost": 0.5},
         }
         response = requests.post(

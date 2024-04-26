@@ -8,6 +8,7 @@
             margin: 0;
             background-color: #ffffff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -28,13 +29,59 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        #character-form {
+            margin-bottom: 20px;
+        }
+        .character-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .character-card:hover {
+            background-color: #f0f0f0;
+        }
+        .character-card h3 {
+            margin-top: 0;
+        }
+        .character-card p {
+            margin-bottom: 0;
+        }
+        #back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div id="lottie-container"></div>
-    <button id="record">Press [SPACE] to record</button>
-    <audio id="audio" controls style="display: none;"></audio>
+    <div id="character-form">
+        <h2>Select a character:</h2>
+        {% for character_name, character in characters.items() %}
+        <div class="character-card" data-character-name="{{ character_name }}">
+            <h3>{{ character.name }}</h3>
+            <p>{{ character.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="chat-container" style="display: none;">
+        <button id="back-button">Back</button>
+        <div id="lottie-container"></div>
+        <button id="record">Press [SPACE] to record</button>
+        <audio id="audio" controls style="display: none;"></audio>
+    </div>
     <script>
+        const characterForm = document.getElementById("character-form");
+        const chatContainer = document.getElementById("chat-container");
+        const backButton = document.getElementById("back-button");
         const recordButton = document.getElementById("record");
         const audioElement = document.getElementById("audio");
         const lottieContainer = document.getElementById("lottie-container");
@@ -43,40 +90,76 @@
         let audioContext;
         let analyser;
         let animationScale = 1;
+        let selectedCharacterName;
 
-        // Load Lottie annimation
-        fetch('static/animations/Animation_1713990842489.json')
-            .then(response => response.json())
-            .then(data => {
-                animation = lottie.loadAnimation({
-                    container: lottieContainer,
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: true,
-                    animationData: data
+        characterForm.addEventListener("click", function(event) {
+            if (event.target.closest(".character-card")) {
+                const characterName = event.target.closest(".character-card").dataset.characterName;
+                startChat(characterName);
+            }
+        });
+
+        backButton.addEventListener("click", function() {
+            chatContainer.style.display = "none";
+            characterForm.style.display = "block";
+            selectedCharacterName = null;
+            if (animation) {
+                animation.destroy();
+                animation = null;
+            }
+        });
+
+        function startChat(characterName) {
+            selectedCharacterName = characterName;
+            characterForm.style.display = "none";
+            chatContainer.style.display = "flex";
+            if (!animation) {
+                initializeChat();
+            }
+        }
+
+        function initializeChat() {
+            // Load Lottie animation
+            fetch('static/animations/Animation_1713990842489.json')
+                .then(response => response.json())
+                .then(data => {
+                    animation = lottie.loadAnimation({
+                        container: lottieContainer,
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        animationData: data
+                    });
                 });
+
+            document.addEventListener('keydown', async (event) => {
+                if (event.code === 'Space' && !mediaRecorder) {
+                    await startRecording();
+                }
             });
 
-        document.addEventListener('keydown', async (event) => {
-            if (event.code === 'Space' && !mediaRecorder) {
-                await startRecording();
-            }
-        });
+            document.addEventListener('keyup', (event) => {
+                if (event.code === 'Space' && mediaRecorder) {
+                    stopRecording();
+                }
+            });
+        }
 
-        document.addEventListener('keyup', (event) => {
-            if (event.code === 'Space' && mediaRecorder) {
-                stopRecording();
-            }
-        });
+        let processing = false;
 
         async function startRecording() {
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.start();
-            recordButton.textContent = "Recoding...";
+            recordButton.textContent = "Recording...";
         }
 
         async function stopRecording() {
+            if (processing) {
+                return;
+            }
+            processing = true;
+
             mediaRecorder.stop();
             recordButton.textContent = "Press <SPACE> to record";
 
@@ -92,6 +175,7 @@
 
             const formData = new FormData();
             formData.append("audio", audioBlob, "audio.wav");
+            formData.append("character_name", selectedCharacterName);
             const response = await fetch("/chat", { method: "POST", body: formData });
 
             const reader = response.body.getReader();
@@ -129,6 +213,7 @@
             onStream(data);
 
             mediaRecorder = null;
+            processing = false;
         }
 
         function visualize() {

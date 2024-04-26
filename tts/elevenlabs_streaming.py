@@ -3,20 +3,18 @@ import requests
 from typing import Iterator
 import time
 
-from dotenv import load_dotenv
-
-load_dotenv()
-
 
 class ElevenLabsStreaming:
-    def __init__(self):
-        self.api_key = os.environ.get("ELEVENLABS_API_KEY")
-        self.voice_id = os.environ.get("ELEVENLABS_VOICE_ID")
+    def __init__(self, config, character_config):
+        self.api_key = config["elevenlabs_api_key"]
+        self.voice_id = character_config["tts-id"]
+        self.elevenlabs_model_id = config["elevenlabs_model_id"]
+        self.output_format = config["output_format"]
         self.api_url = (
             f"https://api.elevenlabs.io/v1/text-to-speech/{self.voice_id}/stream"
         )
         self.optimize_streaming_latency = int(
-            os.environ.get("ELEVENLABS_OPTIMIZE_STREAMING_LATENCY", 0)
+            config["elevenlabs_optimize_streaming_latency"]
         )
 
     def synthesize(self, text: str) -> Iterator[bytes]:
@@ -29,12 +27,13 @@ class ElevenLabsStreaming:
 
         data = {
             "text": text,
-            "model_id": "eleven_monolingual_v1",
+            "model_id": self.elevenlabs_model_id,
             "voice_settings": {
                 "stability": 0.5,
                 "similarity_boost": 0.5,
             },
             "optimize_streaming_latency": self.optimize_streaming_latency,
+            "output_format": self.output_format,
         }
 
         with requests.post(
