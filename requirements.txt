@@ -1,4 +1,4 @@
-Flask
+flask>=1.0, <3.0
 groq
 langchain
 langchain_groq
@@ -7,3 +7,5 @@ python-dotenv
 Requests
 scipy
 pipenv
+google-cloud-logging
+gunicorn<21.0,>=19.2.0
