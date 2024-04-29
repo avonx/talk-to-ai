@@ -6,3 +6,4 @@ prep-*
 temp*
 Pipfile.lock
 config.yaml
+.gcloudignore
